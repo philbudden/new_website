@@ -114,11 +114,11 @@
     const url = item.url && (item.url.startsWith('/') || item.url.startsWith('http')) ? escapeHtml(item.url) : '#';
     
     const tagsHtml = item.tags ? item.tags.map(tag => 
-      `<a href="?tag=${encodeURIComponent(tag)}" class="tag-link">${escapeHtml(tag)}</a>`
+      `<li><a href="?tag=${encodeURIComponent(tag)}" class="tag-link">${escapeHtml(tag)}</a></li>`
     ).join('') : '';
 
     return `
-      <article class="card" data-date="${item.date}" data-tags="${escapeHtml((item.tags || []).join(','))}">
+      <article class="card" data-date="${escapeHtml(item.date || '')}" data-tags="${escapeHtml((item.tags || []).join(','))}">
         <header class="card-header">
           <h3 class="card-title">
             <a href="${url}">${safeTitle}</a>
