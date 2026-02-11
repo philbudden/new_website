@@ -43,7 +43,7 @@ Describe your project, challenge, or opportunity, and I'll get back to you promp
 </form>
 
 <div class="email-fallback">
-  <p>Or contact me directly at: <a href="mailto:hello@example.com">hello@example.com</a></p>
+  <p>Or contact me directly at: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
 </div>
 
-<script src="/assets/js/form.js"></script>
+<script src="/assets/js/form.js" defer></script>

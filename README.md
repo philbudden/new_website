@@ -17,7 +17,7 @@ A static, GitHub Pages–compatible personal and brand website built with Jekyll
 ### Prerequisites
 
 - Ruby 2.5+
-- Jekyll 4.0+
+- Jekyll 3.10.0+ (GitHub Pages uses Jekyll 3.x; Jekyll 4.x requires a custom GitHub Actions workflow)
 
 ### Installation
 

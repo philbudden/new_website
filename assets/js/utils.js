@@ -10,7 +10,7 @@ function getQueryParams() {
   const params = new URLSearchParams(window.location.search);
   const result = {};
   for (const [key, value] of params) {
-    result[key] = decodeURIComponent(value);
+    result[key] = value;
   }
   return result;
 }
@@ -47,15 +47,16 @@ function matchesQuery(query, item) {
 }
 
 /**
- * Filter items by tag
+ * Filter items by tag (case-insensitive)
  * @param {string} tag - Tag to filter by
  * @param {Array} items - Items to filter
  * @returns {Array} Filtered items
  */
 function filterByTag(tag, items) {
   if (!tag) return items;
+  const normalizedTag = tag.toLowerCase();
   return items.filter(item => {
-    return item.tags && item.tags.includes(tag);
+    return item.tags && item.tags.map(t => t.toLowerCase()).includes(normalizedTag);
   });
 }
 
@@ -104,4 +105,20 @@ function formatDate(date) {
  */
 function getElement(id) {
   return document.getElementById(id);
+}
+
+/**
+ * Escape HTML special characters to prevent XSS
+ * @param {string} text - Text to escape
+ * @returns {string} Escaped HTML
+ */
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return (text || '').replace(/[&<>"']/g, char => map[char]);
 }

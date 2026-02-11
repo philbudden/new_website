@@ -16,7 +16,12 @@
 
     // Load JSON index and initialize search
     fetch(COLLECTIONS_INDEX)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error loading blog index: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+      })
       .then(data => {
         allItems = sortByDateDesc(data);
         setupEventListeners();
@@ -103,24 +108,28 @@
 
   function createItemHtml(item) {
     const date = formatDate(item.date);
+    const safeTitle = escapeHtml(item.title);
+    const safeSummary = escapeHtml(item.summary || '');
+    const url = item.url && (item.url.startsWith('/') || item.url.startsWith('http')) ? escapeHtml(item.url) : '#';
+    
     const tagsHtml = item.tags ? item.tags.map(tag => 
-      `<a href="?tag=${encodeURIComponent(tag)}" class="tag-link">${tag}</a>`
+      `<a href="?tag=${encodeURIComponent(tag)}" class="tag-link">${escapeHtml(tag)}</a>`
     ).join('') : '';
 
     return `
-      <article class="card" data-date="${item.date}" data-tags="${item.tags?.join(',') || ''}">
+      <article class="card" data-date="${item.date}" data-tags="${escapeHtml((item.tags || []).join(','))}">
         <header class="card-header">
           <h3 class="card-title">
-            <a href="${item.url}">${item.title}</a>
+            <a href="${url}">${safeTitle}</a>
           </h3>
           <time class="card-date" datetime="${item.date}">
             ${date}
           </time>
         </header>
         <div class="card-body">
-          <p class="card-summary">${item.summary || ''}</p>
+          <p class="card-summary">${safeSummary}</p>
         </div>
-        ${tagsHtml ? `<footer class="card-footer"><div class="card-tags"><ul class="tag-list">${tagsHtml.split('').map(tag => `<li>${tag}</li>`).join('')}</ul></div></footer>` : ''}
+        ${tagsHtml ? `<footer class="card-footer"><div class="card-tags"><ul class="tag-list">${tagsHtml}</ul></div></footer>` : ''}
       </article>
     `;
   }

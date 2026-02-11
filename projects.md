@@ -10,7 +10,7 @@ permalink: /projects/
       <h3>{{ project.title }}</h3>
       <p class="project-description">{{ project.description }}</p>
       <a href="{{ project.github_url }}" class="project-link" target="_blank" rel="noopener noreferrer">
-        View on GitHub →
+        View on GitHub <span aria-hidden="true">→</span><span class="sr-only">(opens in new tab)</span>
       </a>
     </div>
   {% endfor %}

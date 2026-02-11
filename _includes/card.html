@@ -1,7 +1,7 @@
 <article class="card" data-date="{{ include.item.date | date_to_xmlschema }}" data-tags="{{ include.item.tags | join: ',' }}">
   <header class="card-header">
     <h3 class="card-title">
-      <a href="{{ include.item.url }}">{{ include.item.title }}</a>
+      <a href="{% if include.item.url contains 'javascript:' %}#{% else %}{{ include.item.url }}{% endif %}">{{ include.item.title }}</a>
     </h3>
     <time class="card-date" datetime="{{ include.item.date | date_to_xmlschema }}">
       {{ include.item.date | date: "%B %d, %Y" }}

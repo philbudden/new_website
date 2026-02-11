@@ -18,12 +18,6 @@
 
     // Handle form submission
     form.addEventListener('submit', handleSubmit);
-
-    // Focus the first input to signal interactivity
-    const firstInput = form.querySelector('input:not([type="hidden"])');
-    if (firstInput) {
-      firstInput.focus();
-    }
   }
 
   function handleSubmit(e) {
@@ -92,7 +86,7 @@
     // but native submission is safer for GitHub Pages sites
 
     // Show a pending message while form processes
-    showMessage(messageEl, 'Sending your message...', '');
+    showMessage(messageEl, 'Sending your message...', 'pending');
 
     // The form will naturally POST to the action URL
     // After a brief delay to allow the user to see the message, allow submission
@@ -105,8 +99,10 @@
     form.reset();
     formStartTime = Date.now();
     const messageEl = document.getElementById(MESSAGE_ID);
+    if (!messageEl) return;
     messageEl.classList.remove('success');
     messageEl.classList.remove('error');
+    messageEl.classList.remove('pending');
     messageEl.innerHTML = '';
   }
 
@@ -120,6 +116,8 @@
       el.classList.add('success');
     } else if (type === 'error') {
       el.classList.add('error');
+    } else if (type === 'pending') {
+      el.classList.add('pending');
     }
   }
 
