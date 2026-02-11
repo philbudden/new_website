@@ -19,12 +19,16 @@ permalink: /blog/:title/
 
 # Exclude from build
 exclude:
+  - .bundle
+  - .git
+  - .gitignore
+  - .jekyll-cache
+  - AGENTS.md
   - Gemfile
   - Gemfile.lock
   - README.md
-  - AGENTS.md
-  - .git
-  - .gitignore
+  - vendor
+  - vendor/bundle
 
 # Plugins (GitHub Pages compatible)
 plugins:
