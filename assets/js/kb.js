@@ -123,7 +123,7 @@
           <h3 class="card-title">
             <a href="${url}">${safeTitle}</a>
           </h3>
-          <time class="card-date" datetime="${item.date}">
+          <time class="card-date" datetime="${escapeHtml(item.date || '')}">
             ${date}
           </time>
         </header>
