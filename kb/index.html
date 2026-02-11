@@ -1,0 +1,33 @@
+---
+layout: page
+title: Knowledge Base
+permalink: /kb/
+---
+
+<div class="collection-listing">
+  <div class="collection-controls">
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="kb-search" 
+        class="search-input" 
+        placeholder="Search notes..."
+        aria-label="Search knowledge base"
+      >
+    </div>
+  </div>
+
+  <div id="kb-filter-info"></div>
+
+  <ul id="kb-items" class="items-list">
+    {% assign sorted_notes = site.notes | sort: "date" | reverse %}
+    {% for note in sorted_notes %}
+      <li>
+        {% include card.html item=note %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script src="/assets/js/utils.js"></script>
+<script src="/assets/js/kb.js"></script>

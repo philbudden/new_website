@@ -1,0 +1,7 @@
+<ul class="tag-list" role="list">
+  {% for tag in include.tags %}
+    <li role="listitem">
+      <a href="?tag={{ tag | url_encode }}" class="tag-link">{{ tag }}</a>
+    </li>
+  {% endfor %}
+</ul>

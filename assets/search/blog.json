@@ -1,0 +1,14 @@
+---
+---
+[
+  {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+  {% for post in sorted_posts %}
+    {
+      "title": {{ post.title | jsonify }},
+      "url": {{ post.url | jsonify }},
+      "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
+      "tags": {{ post.tags | jsonify }},
+      "summary": {{ post.summary | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

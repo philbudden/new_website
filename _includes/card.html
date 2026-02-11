@@ -1,0 +1,22 @@
+<article class="card" data-date="{{ include.item.date | date_to_xmlschema }}" data-tags="{{ include.item.tags | join: ',' }}">
+  <header class="card-header">
+    <h3 class="card-title">
+      <a href="{{ include.item.url }}">{{ include.item.title }}</a>
+    </h3>
+    <time class="card-date" datetime="{{ include.item.date | date_to_xmlschema }}">
+      {{ include.item.date | date: "%B %d, %Y" }}
+    </time>
+  </header>
+  <div class="card-body">
+    <p class="card-summary">
+      {{ include.item.summary | default: include.item.content | strip_html | truncate: 150 }}
+    </p>
+  </div>
+  {% if include.item.tags %}
+    <footer class="card-footer">
+      <div class="card-tags">
+        {% include tag-list.html tags=include.item.tags %}
+      </div>
+    </footer>
+  {% endif %}
+</article>

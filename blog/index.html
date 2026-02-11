@@ -1,0 +1,33 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+
+<div class="collection-listing">
+  <div class="collection-controls">
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="blog-search" 
+        class="search-input" 
+        placeholder="Search posts..."
+        aria-label="Search blog"
+      >
+    </div>
+  </div>
+
+  <div id="blog-filter-info"></div>
+
+  <ul id="blog-items" class="items-list">
+    {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+    {% for post in sorted_posts %}
+      <li>
+        {% include card.html item=post %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script src="/assets/js/utils.js"></script>
+<script src="/assets/js/blog.js"></script>

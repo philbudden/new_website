@@ -1,0 +1,11 @@
+- title: "Data Pipeline Framework"
+  description: "A robust, scalable framework for building and orchestrating ETL pipelines with built-in monitoring and error handling."
+  github_url: "https://github.com/example/data-pipeline-framework"
+
+- title: "Kubernetes Config Manager"
+  description: "Simplified configuration management for Kubernetes deployments across multiple clusters and environments."
+  github_url: "https://github.com/example/k8s-config-manager"
+
+- title: "Real-time Analytics Engine"
+  description: "High-throughput streaming analytics platform for processing and visualizing data at scale."
+  github_url: "https://github.com/example/realtime-analytics"

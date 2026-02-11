@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#283C50"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="70" r="30" fill="#E89B2C"/>
+  
+  <!-- Body -->
+  <ellipse cx="100" cy="130" rx="35" ry="45" fill="#E89B2C"/>
+  
+  <!-- Accent -->
+  <circle cx="130" cy="90" r="8" fill="#3FB8AF" opacity="0.8"/>
+</svg>

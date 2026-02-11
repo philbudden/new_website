@@ -1,0 +1,35 @@
+title: Data Savvy Solutions
+description: A personal/brand platform for engineering expertise and insights
+baseurl: ""
+url: "https://example.com"
+author: "Your Name"
+
+# Build settings
+theme: null
+markdown: kramdown
+
+# Collections
+collections:
+  notes:
+    output: true
+    permalink: /kb/:title/
+
+# Permalinks
+permalink: /blog/:title/
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - AGENTS.md
+  - .git
+  - .gitignore
+
+# Plugins (GitHub Pages compatible)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Jekyll settings
+encoding: utf-8
